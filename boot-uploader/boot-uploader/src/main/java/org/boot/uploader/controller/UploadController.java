@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.boot.uploader.util.FileUtils.generatePath;
 import static org.boot.uploader.util.FileUtils.merge;
@@ -27,7 +29,8 @@ import static org.boot.uploader.util.FileUtils.merge;
  * @date 2018/6/19
  */
 @RestController
-@RequestMapping("/uploader")
+//@RequestMapping("/uploader")
+@RequestMapping("/oss/material")
 @Slf4j
 public class UploadController {
     @Value("${prop.upload-folder}")
@@ -36,6 +39,11 @@ public class UploadController {
     private FileInfoService fileInfoService;
     @Resource
     private ChunkService chunkService;
+
+    @GetMapping("/test")
+    public String test() {
+        return "lalalala";
+    }
 
     @PostMapping("/chunk")
     public String uploadChunk(Chunk chunk) {
@@ -62,7 +70,6 @@ public class UploadController {
         if (chunkService.checkChunk(chunk.getIdentifier(), chunk.getChunkNumber())) {
             response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
         }
-
         return chunk;
     }
 

@@ -45,7 +45,9 @@ public class FileUtils {
      */
     public static void merge(String targetFile, String folder, String filename) {
         try {
-            Files.createFile(Paths.get(targetFile));
+            if (!Files.exists(Paths.get(targetFile))) {
+                Files.createFile(Paths.get(targetFile));
+            }
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }

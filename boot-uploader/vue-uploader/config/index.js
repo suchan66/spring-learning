@@ -28,9 +28,18 @@ module.exports = {
     assetsSubDirectory: '',
     assetsPublicPath: '/',
     proxyTable: {
-      '/boot': {
+      /*'/boot': {
         target: 'http://localhost:8081',
         changeOrigin: true
+      },*/
+      '/oss': {
+        target: 'http://localhost:8081/oss',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/oss': '' //重写路径将'/api'转化为'/'
+          //"^“这个字符是在中括号”[]“中被使用的话就是表示字符类的否定，如果不是的话就是表示限定开头。
+          //得到正确的请求地址http://localhost:8080/xx
+        }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
