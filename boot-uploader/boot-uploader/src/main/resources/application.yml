@@ -9,9 +9,10 @@ spring:
       max-file-size: 20MB
       max-request-size: 20MB
   datasource:
-    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&useSSL=false
+#    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://172.16.2.39:3306/test?characterEncoding=utf-8&useSSL=false
     username: root
-    password: root
+    password: zaq1@WSX
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     properties:
